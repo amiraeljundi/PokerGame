@@ -1,35 +1,43 @@
 package game;
-import java.util.List;
+
 import java.util.ArrayList;
-import java.util.Random;
-
-
-
+import java.util.List;
 
 public class Hand {
-	//creat a hand in this class
-//	private int handSize;
-//	private List<String> hand;
-//	private Deck deck;
-//	public Hand() {
-//		
-//		handSize = 5;
-//		hand = new ArrayList<String>();
-//		//deck = new Deck();
-//	}
-//	
-//	public List<String> dealAHand() {
-//		Random rand = new Random();
-//		int x=0;
-//		while(x <= handSize) {
-//		String r = deck.get(rand.nextInt(deck.size()));
-//		//String r = deck.get(rand.nextInt(deck.size()));
-//		
-//		hand.add(r);
-//		x=x+1;
-//		}
-//		System.out.println(hand.toArray());
-//		return hand;
-//	}
-	
+
+		private List<Card> hand;
+		public static final int handSize = 5;
+		
+		public Hand() {
+			
+			hand = new ArrayList<Card>(handSize);
+			
+		}
+		
+		public int getSize() {
+			return hand.size();
+		}
+		
+		public void addCard(Card c) {
+			hand.add(c);
+		}
+		
+		public Card getCard(int x) {
+			return hand.get(x);
+		}
+		
+		public void setCard(Card y,int x) {
+			 hand.set(x, y);
+		}
+		
+		public String toString() {
+			StringBuilder sb = new StringBuilder();
+			for (Card s : hand)
+			{
+			    sb.append(s);
+			    //sb.append(System.lineSeparator());
+			    sb.append(" ");
+			}
+			return sb.toString();
+		}
 }
