@@ -7,33 +7,23 @@ import java.util.*;
 
 public class Card {
 	
-    private byte cardSuit;
-    private byte cardRank; 
+    public static final int SPADE   = 4;
+    public static final int HEART   = 3;
+    public static final int CLUB    = 2;
+    public static final int DIAMOND = 1;
+	
+    private int cardSuit;
+    private int cardRank; 
 	
     private List<String> suit;
     private List<String> rank;
-   
-    
-    public Card(int s, int r) {
-    	
-    	suit = new ArrayList<String>();
-    	rank = new ArrayList<String>();
-    	
-    	if(r == 1) {
-    		cardRank = 14;
-    	}else
-    	{
-    		cardRank =(byte) r;
-    		cardSuit =(byte) s;
-    	}
-    }
         
     public Card() {
     	suit = new ArrayList<String>();
     	rank = new ArrayList<String>();
 		// TODO Auto-generated constructor stub
 	}
-
+   
 	public void bufferReadRank() {
     	StringBuilder sb = new StringBuilder();
 		String strLine = "";
@@ -51,8 +41,8 @@ public class Card {
 					rank.add(strLine);
 				}
 			}
-			System.out.println(Arrays.toString(rank.toArray()));
-			System.out.println(rank.size());
+			//System.out.println(Arrays.toString(rank.toArray()));
+			//System.out.println(rank.size());
 			br.close();
 			
 		}catch(FileNotFoundException e) {
@@ -80,8 +70,8 @@ public class Card {
 					suit.add(strLine);
 				}
 			}
-			System.out.println(Arrays.toString(suit.toArray()));
-			System.out.println(suit.size());
+			//System.out.println(Arrays.toString(suit.toArray()));
+			//System.out.println(suit.size());
 			br.close();
 			
 		}catch(FileNotFoundException e) {
@@ -89,6 +79,18 @@ public class Card {
 		}catch(IOException e) {
 			System.err.println("unable to read the file.");
 		}
+    }
+    
+    public void creatCard(int s, int r) {
+  
+    	
+    	if(r == 1) {
+    		cardRank = 14;
+    	}else
+    	{
+    		cardRank = r;
+    		cardSuit = s;
+    	}
     }
     
     public List<String> getSuitList(){
@@ -100,11 +102,11 @@ public class Card {
     }
 
     public int getSuit() {
-    	return this.cardSuit;
+    	return cardSuit;
     }
     
     public String suitString() {
-    	return this.suit.get(this.cardSuit);
+    	return String.valueOf(suit.get(cardSuit));
     }
     
     public int getRank() {
@@ -113,10 +115,10 @@ public class Card {
     
     public String rankString() {
     	
-    	return this.rank.get(this.cardRank);
+    	return String.valueOf(rank.get(cardRank));
     }
     
     public String toString() {
-    	return this.rank.get(cardRank)+ this.suit.get(cardSuit);
+    	return rank.get(cardRank) + suit.get(cardSuit);
     }
 }

@@ -11,53 +11,81 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Deck {
-//	
-//	protected  List<String> cards;
-//	
-//	public Deck() {
-//		
-//		cards = new ArrayList<String>();
-//		
-//		StringBuilder sb = new StringBuilder();
-//		String strLine = "";
-//		
-//		try {
-//			BufferedReader br = new BufferedReader(new FileReader("/Users/amirajundi/Desktop/comp4004/pokerGame/deck.txt"));
-//			while(strLine != null) {
-//				strLine = br.readLine();
-//				sb.append(strLine);
-//				sb.append(System.lineSeparator());
-//				//strLine = br.readLine();
-//				if(strLine == null){
-//					break;
-//				}else {
-//					cards.add(strLine);
-//				}
-//			}
-//			System.out.println(Arrays.toString(cards.toArray()));
-//			System.out.println(cards.size());
-//			br.close();
-//			
-//		}catch(FileNotFoundException e) {
-//			System.err.println("File not found");
-//		}catch(IOException e) {
-//			System.err.println("unable to read the file.");
-//		}
-//	}
-//	
-//	public List<String> getDeckList(){
-//		
-//		return cards;
-//	}
-//	
-//	public int size() {
-//		return cards.size();
-//	}
-//	
-//	public String get(int x) {
-//		return cards.get(x);
-//	}
-//	
 
+	private List<Card> deckOfCards;
+	public static final int nCards = 52;
+	private int currentCard;
+	
+	public Deck() {
 		
+		deckOfCards= new ArrayList<Card>(nCards);
+		
+		
+		int i = 0;
+		for(int suit = Card.DIAMOND; suit <= Card.SPADE; suit++) {
+			for(int rank = 2; rank <= 14; rank++) {
+				Card card = new Card();
+				card.bufferReadRank();
+				card.bufferReadSuit();
+				card.creatCard(suit, rank);
+				//System.out.println(card.rankString());
+				deckOfCards.add(i, card);
+				//System.out.println(deckOfCards.get(i));
+				i++;		
+			}	
+		}
+		currentCard=0;
+		//System.out.println(deckOfCards.size());
+	}
+	
+	
+	public void shuffle() {
+		Card temp;
+		for(int k=1; k<= 1000;k++) {
+			int rand1 = (int) (nCards * Math.random());
+			int rand2 = (int) (nCards * Math.random());
+					 
+			temp = deckOfCards.get(rand1);
+			deckOfCards.set(rand1, deckOfCards.get(rand2));
+			deckOfCards.set(rand2, temp);
+		}
+//		for (int i = 0; i< deckOfCards.size();i++) {
+//			System.out.println(deckOfCards.get(i));
+//		}
+//		System.out.println();
+//		System.out.println(deckOfCards.size());
+		currentCard = 0;
+
+	}
+	
+	public Card deal() {
+		if( currentCard < nCards) {
+			return (deckOfCards.get(currentCard++));
+			
+		}
+		else {
+			System.out.println("Out of cards");
+			return null;
+		}
+	}
+	
+	public String toString() {
+		String s = "";
+		int k = 0;
+		for(int i =0; i<4;i++) {
+			for(int j=1; j<=13; j++) {
+				s+= (deckOfCards.get(k++)+ " ");
+			}
+			s+= "\n";
+		}
+		
+		return (s);
+	}
+	
+	
+
 }
+	
+
+	
+
