@@ -17,8 +17,8 @@ public class Main {
 		deck.shuffle();
 		System.out.println(deck.toString());
 		Player player1 = new Player();
-		Hand hand = new Hand();
-		hand.addCard(deck.deal());
+		//Hand hand = new Hand();
+		//hand.addCard(deck.deal());
 		//System.out.println(hand.getSize());
 		//hand.setCard(deck.deal(), 0);
 		//System.out.println(hand.getCard(0));

@@ -7,6 +7,7 @@ import org.junit.Test;
 import game.Card;
 import game.Deck;
 import game.Hand;
+import game.Player;
 
 public class GettersTest {
 	
@@ -109,6 +110,50 @@ public class GettersTest {
 		assertTrue(hand.getCard(2).equals(card3));
 		assertTrue(hand.getCard(3).equals(card4));
 		assertTrue(hand.getCard(4).equals(card5));
+	}
+	
+	@Test
+	public void getPlayerHandTest() {
+		Hand hand = new Hand();
+		Player player1 = new Player();
+		
+		Card card1 = new Card();
+		Card card2 = new Card();
+		Card card3 = new Card();
+		Card card4 = new Card();
+		Card card5 = new Card();
+		
+		card1.creatCard(3, 7);
+		card2.creatCard(1,12);
+		card3.creatCard(2,8);
+		card4.creatCard(4,13);
+		card5.creatCard(1,1);
+		
+		player1.getHand().addCard(card1);
+		player1.getHand().addCard(card2);
+		player1.getHand().addCard(card3);
+		player1.getHand().addCard(card4);
+		player1.getHand().addCard(card5);
+		
+		hand.addCard(card1);
+		hand.addCard(card2);
+		hand.addCard(card3);
+		hand.addCard(card4);
+		hand.addCard(card5);
+		
+		List<Card> exp = new ArrayList<Card>();
+		List<Card> act = new ArrayList<Card>();
+		
+		for(int i = 0; i<5; i++) {
+			
+			exp.add(hand.getCard(i));
+			act.add(player1.getHand().getCard(i));
+			
+		}
+		
+		assertEquals(exp,act);
+		
+		
 	}
 
 }
