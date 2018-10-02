@@ -13,11 +13,9 @@ public class DeckTest {
 		Deck deck = new Deck();
 		Deck shuffleddeck = new Deck();
 		shuffleddeck.shuffle();
-		
-		assertFalse(deck.equals(shuffleddeck));
-		
-		
-		
+		assertFalse(deck.equals(shuffleddeck));	
 	}
+	
+	
 
 }
