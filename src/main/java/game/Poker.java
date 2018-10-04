@@ -61,5 +61,20 @@ public class Poker {
 		return false;
 	}
 	
+	public boolean StraightFlush(Hand h) {
+		
+		for(int i = 1; i<h.getSize(); i++) {
+			if(h.getCard(0).getSuit() != h.getCard(i).getSuit()) {
+				return false;
+			}
+		}
+		for(int j = 1; j<h.getSize(); j++) {
+			if((h.getCard(j-1).getRank()-1) != (h.getCard(j).getRank())) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 
 }
