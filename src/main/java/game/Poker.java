@@ -120,5 +120,14 @@ public class Poker {
 		return false;
 	}
 	
+	public boolean flush(Hand h) {
+		
+		for(int i = 1; i<h.getSize(); i++) {
+			if(h.getCard(0).getSuit() != h.getCard(i).getSuit()) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 }

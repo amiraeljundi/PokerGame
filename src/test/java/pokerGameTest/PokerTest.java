@@ -137,7 +137,7 @@ public class PokerTest {
 
 		//poker.sortByRank(player.getHand());
 		System.out.println(player.getHand().toString());
-		boolean act = poker.fullHouse(player.getHand());
+		boolean act = poker.flush(player.getHand());
 		boolean ans = true;
 		assertEquals(ans,act);
 
