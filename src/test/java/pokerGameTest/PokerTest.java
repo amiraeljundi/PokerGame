@@ -196,6 +196,38 @@ public class PokerTest {
 		assertEquals(ans,act);
 
 	}
+	
+	@Test
+	public void twoPairTest() {
+		Poker poker = new Poker();
+		Player player = new Player();
+		for(int i = 0; i<2; i++) {
+			Card card = new Card();
+			card.bufferReadRank();
+			card.bufferReadSuit();
+			card.creatCard(i+1 , 4);
+			player.getHand().addCard(card);	
+		}
+		for(int i = 1; i<3; i++) {
+			Card card = new Card();
+			card.bufferReadRank();
+			card.bufferReadSuit();
+			card.creatCard(i+1 ,3 );
+			player.getHand().addCard(card);		
+		}
+		Card card = new Card();
+		card.bufferReadRank();
+		card.bufferReadSuit();
+		card.creatCard(4 , 12);
+		player.getHand().addCard(card);	
+		
+		//poker.sortByRank(player.getHand());
+		System.out.println(player.getHand().toString());
+		boolean act = poker.threeOfAKind(player.getHand());
+		boolean ans = true;
+		assertEquals(ans,act);
+
+	}
 
 
 
