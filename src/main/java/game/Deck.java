@@ -19,8 +19,6 @@ public class Deck {
 	public Deck() {
 		
 		deckOfCards= new ArrayList<Card>(nCards);
-		
-		
 		int i = 0;
 		for(int suit = Card.DIAMOND; suit <= Card.SPADE; suit++) {
 			for(int rank = 2; rank <= 14; rank++) {

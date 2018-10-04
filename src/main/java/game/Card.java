@@ -119,6 +119,6 @@ public class Card {
     }
     
     public String toString() {
-    	return rank.get(cardRank) + suit.get(cardSuit);
+    	return String.valueOf(rank.get(cardRank)) + String.valueOf(suit.get(cardSuit));
     }
 }

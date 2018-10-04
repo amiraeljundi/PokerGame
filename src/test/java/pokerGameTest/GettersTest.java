@@ -151,9 +151,7 @@ public class GettersTest {
 			
 		}
 		
-		assertEquals(exp,act);
-		
-		
+		assertEquals(exp,act);	
 	}
 
 }

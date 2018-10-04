@@ -14,6 +14,8 @@ public class Hand {
 			
 		}
 		
+		
+		
 		public int getSize() {
 			return hand.size();
 		}
