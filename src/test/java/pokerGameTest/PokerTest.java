@@ -59,7 +59,31 @@ public class PokerTest {
 
 	}
 	
+	@Test
+	public void fourOfAKindtest() {
+		Poker poker = new Poker();
+		Player player = new Player();
+		int j = 3;
+		for(int i = 1; i<=4; i++) {
+			Card card = new Card();
+			card.bufferReadRank();
+			card.bufferReadSuit();
+			card.creatCard(i, 11);
+			player.getHand().addCard(card);
+		}
+		Card c = new Card();
+		c.bufferReadRank();
+		c.bufferReadSuit();
+		c.creatCard(1, 7);
+		player.getHand().addCard(c);
+		
+		poker.sortByRank(player.getHand());
+		System.out.println(player.getHand().toString());
+		boolean act = poker.fourOfAKind(player.getHand());
+		boolean ans = true;
+		assertEquals(ans,act);
 
+	}
 
 
 }
