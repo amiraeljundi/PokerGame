@@ -105,13 +105,43 @@ public class PokerTest {
 		}
 		
 		poker.sortByRank(player.getHand());
-		System.out.println(player.getHand().toString());
+		//System.out.println(player.getHand().toString());
 		boolean act = poker.fullHouse(player.getHand());
 		boolean ans = true;
 		assertEquals(ans,act);
 
 	}
 	
+	@Test
+	public void flushTest() {
+		Poker poker = new Poker();
+		Player player = new Player();
+		int j = 3;
+		int k = 8;
+		for(int i = 0; i<2; i++) {
+			Card card = new Card();
+			card.bufferReadRank();
+			card.bufferReadSuit();
+			card.creatCard(2, j+1);
+			j= j+i+1;
+			player.getHand().addCard(card);
+		}
+		for(int i = 0; i<3; i++) {
+			Card card = new Card();
+			card.bufferReadRank();
+			card.bufferReadSuit();
+			card.creatCard(2, k-i);
+			
+			player.getHand().addCard(card);
+		}
+
+		//poker.sortByRank(player.getHand());
+		System.out.println(player.getHand().toString());
+		boolean act = poker.fullHouse(player.getHand());
+		boolean ans = true;
+		assertEquals(ans,act);
+
+	}
 
 
 }
