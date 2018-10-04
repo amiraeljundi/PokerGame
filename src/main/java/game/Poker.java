@@ -93,5 +93,32 @@ public class Poker {
 		return false;
 	}
 	
+	public boolean fullHouse(Hand h) {
+		
+		int rank1 = h.getCard(0).getRank();
+		int counter = 1;
+		
+		int rank2 = h.getCard(h.getSize()-1).getRank();
+		int counter2 = 1;
+		
+		for(int i = 1 ; i < h.getSize()-1; i++) {
+			if(h.getCard(i).getRank() == rank1) {
+				counter++;
+			}
+			if(h.getCard(i).getRank() == rank2) {
+				counter2++;
+			}	
+		}	
+		if(counter == 3 && counter2 ==2) {
+			return true;
+		}
+
+		if(counter ==2 && counter2 ==3) {
+			return true;
+		}
+
+		return false;
+	}
+	
 
 }
