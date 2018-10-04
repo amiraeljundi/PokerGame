@@ -76,5 +76,22 @@ public class Poker {
 		return true;
 	}
 	
+	public boolean fourOfAKind(Hand h) {
+		
+		int counter = 0;
+		for(int i = 0; i< h.getSize(); i++) {
+			counter = 0;
+			for(int j = 0; j<h.getSize(); j++) {
+				if(h.getCard(j).getRank() == h.getCard(i).getRank()) {
+					counter++;
+				}
+			}
+			if(counter >= 4) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 
 }
