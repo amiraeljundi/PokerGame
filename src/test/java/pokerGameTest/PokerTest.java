@@ -30,7 +30,7 @@ public class PokerTest {
 		}
 		
 		poker.sortByRank(player.getHand());
-		System.out.println(player.getHand().toString());
+		//System.out.println(player.getHand().toString());
 		boolean act = poker.royalFlush(player.getHand());
 		boolean ans = true;
 		assertEquals(ans,act);
@@ -52,7 +52,7 @@ public class PokerTest {
 		}
 		
 		poker.sortByRank(player.getHand());
-		System.out.println(player.getHand().toString());
+		//System.out.println(player.getHand().toString());
 		boolean act = poker.StraightFlush(player.getHand());
 		boolean ans = true;
 		assertEquals(ans,act);
@@ -78,12 +78,40 @@ public class PokerTest {
 		player.getHand().addCard(c);
 		
 		poker.sortByRank(player.getHand());
+		//System.out.println(player.getHand().toString());
+		boolean act = poker.fourOfAKind(player.getHand());
+		boolean ans = true;
+		assertEquals(ans,act);
+
+	}
+	
+	@Test
+	public void fullHouseTest() {
+		Poker poker = new Poker();
+		Player player = new Player();
+		for(int i = 1; i<=3; i++) {
+			Card card = new Card();
+			card.bufferReadRank();
+			card.bufferReadSuit();
+			card.creatCard(i, 10);
+			player.getHand().addCard(card);
+		}
+		for(int j = 1; j<=2; j++) {
+			Card card = new Card();
+			card.bufferReadRank();
+			card.bufferReadSuit();
+			card.creatCard(j, 9);
+			player.getHand().addCard(card);
+		}
+		
+		poker.sortByRank(player.getHand());
 		System.out.println(player.getHand().toString());
 		boolean act = poker.fourOfAKind(player.getHand());
 		boolean ans = true;
 		assertEquals(ans,act);
 
 	}
+	
 
 
 }
