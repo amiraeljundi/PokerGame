@@ -188,5 +188,15 @@ public class Poker {
 			return false;
 		}
 	}
+//	
+//	public Card highCard(Hand h) {
+//		
+//		Card hc = new Card();
+//		for(int i = 0; i<5; i++) {
+//			if(h.getCard(i).getRank() > 0) {
+//				hc.creatCard(h.getCard(i).getSuit(), );
+//			}
+//		}
+//	}
 
 }

@@ -250,8 +250,6 @@ public class PokerTest {
 		c2.bufferReadSuit();
 		c2.creatCard(3, 9);
 		player.getHand().addCard(c2);
-		
-		
 		//poker.sortByRank(player.getHand());
 		System.out.println(player.getHand().toString());
 		boolean act = poker.pair(player.getHand());
