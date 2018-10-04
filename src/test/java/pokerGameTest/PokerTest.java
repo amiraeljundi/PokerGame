@@ -223,7 +223,7 @@ public class PokerTest {
 		
 		//poker.sortByRank(player.getHand());
 		System.out.println(player.getHand().toString());
-		boolean act = poker.threeOfAKind(player.getHand());
+		boolean act = poker.twoPair(player.getHand());
 		boolean ans = true;
 		assertEquals(ans,act);
 
