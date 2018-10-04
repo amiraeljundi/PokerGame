@@ -129,5 +129,15 @@ public class Poker {
 		}
 		return true;
 	}
+	
+	public boolean Straight(Hand h) {
+		
+		for(int j = 1; j<h.getSize(); j++) {
+			if((h.getCard(j-1).getRank()-1) != (h.getCard(j).getRank())) {
+				return false;
+			}
+		}
+		return true;	
+	}
 
 }

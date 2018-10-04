@@ -165,7 +165,7 @@ public class PokerTest {
 		poker.sortByRank(player.getHand());
 		//poker.sortBySuit(player.getHand());
 		System.out.println(player.getHand().toString());
-		boolean act = poker.flush(player.getHand());
+		boolean act = poker.Straight(player.getHand());
 		boolean ans = true;
 		assertEquals(ans,act);
 
