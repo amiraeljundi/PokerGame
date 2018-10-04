@@ -198,6 +198,8 @@ public class PokerTest {
 	public void twoPairTest() {
 		Poker poker = new Poker();
 		Player player = new Player();
+		Deck deck = new Deck();
+		deck.shuffle();
 		for(int i = 0; i<2; i++) {
 			Card card = new Card();
 			card.bufferReadRank();
@@ -212,12 +214,7 @@ public class PokerTest {
 			card.creatCard(i+1 ,3 );
 			player.getHand().addCard(card);		
 		}
-		Card card = new Card();
-		card.bufferReadRank();
-		card.bufferReadSuit();
-		card.creatCard(4 , 12);
-		player.getHand().addCard(card);	
-		
+		player.getHand().addCard(deck.deal());
 		//poker.sortByRank(player.getHand());
 		//System.out.println(player.getHand().toString());
 		boolean act = poker.twoPair(player.getHand());
@@ -225,32 +222,43 @@ public class PokerTest {
 		assertEquals(ans,act);
 
 	}
-//
-//	@Test
-//	public void PairTest() {
-//		Poker poker = new Poker();
-//		Player player = new Player();
-//		Deck deck = new Deck();
-//		deck.shuffle();
-//		for(int i = 0; i<2; i++) {
-//			Card card = new Card();
-//			card.bufferReadRank();
-//			card.bufferReadSuit();
-//			card.creatCard(i+2 , 14);
-//			player.getHand().addCard(card);	
-//		}
-//		for(int i = 0; i<3; i++) {
-//			player.getHand().addCard(deck.deal());
-//			
-//		}
-//		
-//		//poker.sortByRank(player.getHand());
-//		System.out.println(player.getHand().toString());
-//		boolean act = poker.twoPair(player.getHand());
-//		boolean ans = true;
-//		assertEquals(ans,act);
-//
-//	}
-//
+
+	@Test
+	public void PairTest() {
+		Poker poker = new Poker();
+		Player player = new Player();
+	
+		for(int i = 0; i<2; i++) {
+			Card card = new Card();
+			card.bufferReadRank();
+			card.bufferReadSuit();
+			card.creatCard(i+2 , 14);
+			player.getHand().addCard(card);	
+		}
+		Card c = new Card();
+		c.bufferReadRank();
+		c.bufferReadSuit();
+		c.creatCard(1, 7);
+		player.getHand().addCard(c);
+		Card c1 = new Card();
+		c1.bufferReadRank();
+		c1.bufferReadSuit();
+		c1.creatCard(2, 2);
+		player.getHand().addCard(c1);
+		Card c2 = new Card();
+		c2.bufferReadRank();
+		c2.bufferReadSuit();
+		c2.creatCard(3, 9);
+		player.getHand().addCard(c2);
+		
+		
+		//poker.sortByRank(player.getHand());
+		System.out.println(player.getHand().toString());
+		boolean act = poker.pair(player.getHand());
+		boolean ans = true;
+		assertEquals(ans,act);
+
+	}
+
 
 }

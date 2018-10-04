@@ -172,5 +172,21 @@ public class Poker {
 			return false;
 		}
 	}
+	
+	public boolean pair(Hand h) {
+		
+		int count = 0;
+		for(int i = 1; i<5; i++) {
+			if(h.getCard(i-1).getRank() == h.getCard(i).getRank()) {
+				count++;
+			}
+		}
+		if(count == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 
 }
