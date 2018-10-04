@@ -189,10 +189,9 @@ public class PokerTest {
 			j=j-5;
 			
 		}
-	
 		//poker.sortByRank(player.getHand());
 		System.out.println(player.getHand().toString());
-		boolean act = poker.Straight(player.getHand());
+		boolean act = poker.threeOfAKind(player.getHand());
 		boolean ans = true;
 		assertEquals(ans,act);
 
