@@ -133,7 +133,6 @@ public class PokerTest {
 			
 			player.getHand().addCard(card);
 		}
-		//poker.sortByRank(player.getHand());
 		//System.out.println(player.getHand().toString());
 		boolean act = poker.flush(player.getHand());
 		boolean ans = true;
@@ -160,16 +159,45 @@ public class PokerTest {
 		c.bufferReadSuit();
 		c.creatCard(1, 5);
 		player.getHand().addCard(c);
-		
-
 		poker.sortByRank(player.getHand());
-		//poker.sortBySuit(player.getHand());
+		//System.out.println(player.getHand().toString());
+		boolean act = poker.Straight(player.getHand());
+		boolean ans = true;
+		assertEquals(ans,act);
+
+	}
+	
+	@Test
+	public void threeOfAKindTest() {
+		Poker poker = new Poker();
+		Player player = new Player();
+		for(int i = 1; i<4; i++) {
+			Card card = new Card();
+			card.bufferReadRank();
+			card.bufferReadSuit();
+			card.creatCard(i , 7);
+			player.getHand().addCard(card);
+			
+		}
+		int j= 13;
+		for(int i = 1; i<3; i++) {
+			Card card = new Card();
+			card.bufferReadRank();
+			card.bufferReadSuit();
+			card.creatCard(i ,j );
+			player.getHand().addCard(card);
+			j=j-5;
+			
+		}
+	
+		//poker.sortByRank(player.getHand());
 		System.out.println(player.getHand().toString());
 		boolean act = poker.Straight(player.getHand());
 		boolean ans = true;
 		assertEquals(ans,act);
 
 	}
+
 
 
 }
