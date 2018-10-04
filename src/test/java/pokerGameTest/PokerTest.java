@@ -171,6 +171,9 @@ public class PokerTest {
 	public void threeOfAKindTest() {
 		Poker poker = new Poker();
 		Player player = new Player();
+		Deck deck = new Deck();
+		deck.shuffle();
+		
 		for(int i = 1; i<4; i++) {
 			Card card = new Card();
 			card.bufferReadRank();
@@ -179,14 +182,8 @@ public class PokerTest {
 			player.getHand().addCard(card);
 			
 		}
-		int j= 13;
-		for(int i = 1; i<3; i++) {
-			Card card = new Card();
-			card.bufferReadRank();
-			card.bufferReadSuit();
-			card.creatCard(i ,j );
-			player.getHand().addCard(card);
-			j=j-5;
+		for(int i = 0; i<2; i++) {
+			player.getHand().addCard(deck.deal());
 			
 		}
 		//poker.sortByRank(player.getHand());
@@ -228,32 +225,32 @@ public class PokerTest {
 		assertEquals(ans,act);
 
 	}
-
-	@Test
-	public void PairTest() {
-		Poker poker = new Poker();
-		Player player = new Player();
-		Deck deck = new Deck();
-		deck.shuffle();
-		for(int i = 0; i<2; i++) {
-			Card card = new Card();
-			card.bufferReadRank();
-			card.bufferReadSuit();
-			card.creatCard(i+2 , 14);
-			player.getHand().addCard(card);	
-		}
-		for(int i = 0; i<3; i++) {
-			player.getHand().addCard(deck.deal());
-			
-		}
-		
-		//poker.sortByRank(player.getHand());
-		System.out.println(player.getHand().toString());
-		boolean act = poker.twoPair(player.getHand());
-		boolean ans = true;
-		assertEquals(ans,act);
-
-	}
-
+//
+//	@Test
+//	public void PairTest() {
+//		Poker poker = new Poker();
+//		Player player = new Player();
+//		Deck deck = new Deck();
+//		deck.shuffle();
+//		for(int i = 0; i<2; i++) {
+//			Card card = new Card();
+//			card.bufferReadRank();
+//			card.bufferReadSuit();
+//			card.creatCard(i+2 , 14);
+//			player.getHand().addCard(card);	
+//		}
+//		for(int i = 0; i<3; i++) {
+//			player.getHand().addCard(deck.deal());
+//			
+//		}
+//		
+//		//poker.sortByRank(player.getHand());
+//		System.out.println(player.getHand().toString());
+//		boolean act = poker.twoPair(player.getHand());
+//		boolean ans = true;
+//		assertEquals(ans,act);
+//
+//	}
+//
 
 }
