@@ -6,7 +6,7 @@ public class Poker {
 	public Poker() {
 	
 	}
-	
+
 	public void sortBySuit(Hand h) {
 		
 		int i, j, min_j;
@@ -47,11 +47,9 @@ public class Poker {
 	}
 	
 	public boolean royalFlush(Hand h) {
-		int i = 0;
-		while (i< h.getSize()) {
-			if(h.getCard(i).getRank() >= 10) {}
-			for(int j = 0; j< h.getSize(); j++) {
-				if(h.getCard(j).getSuit() == h.getCard(j+1).getSuit()) {
+		for(int i =0; i< h.getSize(); i++) {
+			if(h.getCard(i).getSuit() == h.getCard(i+1).getSuit()) {
+				if(h.getCard(i).getRank() >= 10) {
 					return true;
 				}
 			}
@@ -100,7 +98,6 @@ public class Poker {
 	
 	}
 
-	
 	public boolean flush(Hand h) {
 		
 		for(int i = 1; i<h.getSize(); i++) {
@@ -110,7 +107,6 @@ public class Poker {
 		}
 		return true;
 	}
-	
 	
 	public boolean Straight(Hand h) {
 		
@@ -177,6 +173,35 @@ public class Poker {
 		return false;
 	}
 
+	public boolean oneAwayFromRoyalFlush(Hand h) {
+		int count = 0;
+		for(int i =0; i< h.getSize(); i++) {
+			if(h.getCard(0).getSuit() == h.getCard(i).getSuit()) {
+				if(h.getCard(i).getRank() >= 10) {
+					count = count + 1;
+				}
+			}
+		
+		}
+		if(count == 3) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
 	
+	public boolean oneCardAwayFromFourOfAKind(Hand h) {
+		if(threeOfAKind(h)== true) {
+			System.out.println("you are one card away from four of a kind.");
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
 
+	
 }

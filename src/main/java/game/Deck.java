@@ -31,6 +31,10 @@ public class Deck {
 	
 	}
 	
+	public int getSize() {
+		return deckOfCards.size();
+	}
+	
 	public void shuffle() {
 		Card temp;
 		for(int k=1; k<= 1000;k++) {

@@ -28,8 +28,8 @@ public class DeckTest {
 	
 	@Test
 	public void suitsAreCorrectlyRanked() {
-		Card card = new Card();
-		card.bufferReadSuit();
+		Card card = new Card(2,2);
+		//card.bufferReadSuit();
 		List<String> s = card.getSuitList();
 		assertEquals(s.get(1), "C");
 		assertEquals(s.get(2), "D");
@@ -40,8 +40,8 @@ public class DeckTest {
 	
 	@Test
 	public void rankAreCorrectlyRanked() {
-		Card card = new Card();
-		card.bufferReadRank();
+		Card card = new Card(2,2);
+		//card.bufferReadRank();
 		List<String> r = card.getRankList();
 		assertEquals(r.get(2), "2");
 		assertEquals(r.get(3), "3");
