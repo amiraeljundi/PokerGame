@@ -1,20 +1,23 @@
 package game;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
 
 		private List<Card> hand;
+		
 		public static final int handSize = 5;
 		
 		public Hand() {
-			
+		
 			hand = new ArrayList<Card>(handSize);
 			
 		}
-		
-		
 		
 		public int getSize() {
 			return hand.size();
@@ -42,4 +45,16 @@ public class Hand {
 			}
 			return sb.toString();
 		}
-}
+		
+		public void shuffle() {
+			Card temp;
+			for(int k=1; k<= 50;k++) {
+				int rand1 = (int) (5 * Math.random());
+				int rand2 = (int) (5 * Math.random());
+						 
+				temp = hand.get(rand1);
+				hand.set(rand1, hand.get(rand2));
+				hand.set(rand2, temp);
+			}
+		}
+	}

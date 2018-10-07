@@ -2,8 +2,6 @@ package game;
 
 public class Poker {
 
-
-	
 	
 	public Poker() {
 	
@@ -49,31 +47,29 @@ public class Poker {
 	}
 	
 	public boolean royalFlush(Hand h) {
-		
-		if(h.getCard(0).getRank() == 14 && h.getCard(1).getRank()== 13 && h.getCard(2).getRank()==12
-				&& h.getCard(3).getRank() ==11 && h.getCard(4).getRank()==10) {
-			for(int i =0; i < h.getSize(); i++) {
-				if(h.getCard(i).getSuit() == h.getCard(i+1).getSuit()) {
+		int i = 0;
+		while (i< h.getSize()) {
+			if(h.getCard(i).getRank() >= 10) {}
+			for(int j = 0; j< h.getSize(); j++) {
+				if(h.getCard(j).getSuit() == h.getCard(j+1).getSuit()) {
 					return true;
 				}
 			}
 		}
 		return false;
 	}
-	
+
 	public boolean StraightFlush(Hand h) {
-		
-		for(int i = 1; i<h.getSize(); i++) {
-			if(h.getCard(0).getSuit() != h.getCard(i).getSuit()) {
-				return false;
+		for(int i = 0; i <= h.getSize(); i++) {
+			if(h.getCard(i).getSuit() == h.getCard(i+1).getSuit()) {
+				for(int j =0; j< h.getSize(); j++) {
+					if( Math.abs( h.getCard(j).getRank() - h.getCard(j+1).getRank() ) <=4 ) {
+						return true;
+					}
+				}
 			}
 		}
-		for(int j = 1; j<h.getSize(); j++) {
-			if((h.getCard(j-1).getRank()-1) != (h.getCard(j).getRank())) {
-				return false;
-			}
-		}
-		return true;
+		return false;
 	}
 	
 	public boolean fourOfAKind(Hand h) {
@@ -92,33 +88,18 @@ public class Poker {
 		}
 		return false;
 	}
-	
+		
 	public boolean fullHouse(Hand h) {
 		
-		int rank1 = h.getCard(0).getRank();
-		int counter = 1;
-		
-		int rank2 = h.getCard(h.getSize()-1).getRank();
-		int counter2 = 1;
-		
-		for(int i = 1 ; i < h.getSize()-1; i++) {
-			if(h.getCard(i).getRank() == rank1) {
-				counter++;
-			}
-			if(h.getCard(i).getRank() == rank2) {
-				counter2++;
-			}	
-		}	
-		if(counter == 3 && counter2 ==2) {
+		if(threeOfAKind(h) == true && pair(h) == true) {
 			return true;
 		}
-
-		if(counter ==2 && counter2 ==3) {
-			return true;
+		else {
+			return false;
 		}
-
-		return false;
+	
 	}
+
 	
 	public boolean flush(Hand h) {
 		
@@ -130,15 +111,20 @@ public class Poker {
 		return true;
 	}
 	
+	
 	public boolean Straight(Hand h) {
 		
-		for(int j = 1; j<h.getSize(); j++) {
-			if((h.getCard(j-1).getRank()-1) != (h.getCard(j).getRank())) {
-				return false;
+	for(int i = 0; i <= h.getSize(); i++) {
+		
+			for(int j =0; j< h.getSize(); j++) {
+				if( Math.abs( h.getCard(j).getRank() - h.getCard(j+1).getRank() ) <=4 ) {
+					return true;
+			
 			}
 		}
-		return true;	
 	}
+	return false;
+}
 	
 	public boolean threeOfAKind(Hand h) {
 		
@@ -159,44 +145,38 @@ public class Poker {
 	
 	public boolean twoPair(Hand h) {
 		
-		int count =0;
-		for(int i = 1; i<5; i++) {
-			if(h.getCard(i-1).getRank() == h.getCard(i).getRank()) {
-				count++;
+		int counter = 0;
+		for(int i = 0; i< h.getSize(); i++) {
+			counter = 0;
+			for(int j = 0; j<h.getSize(); j++) {
+				if(h.getCard(j).getRank() == h.getCard(i+1).getRank()) {
+					counter++;
+				}
+			}
+			if(counter == 2 ) {
+				return true;
 			}
 		}
-		if(count == 2) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return false;
 	}
 	
 	public boolean pair(Hand h) {
 		
-		int count = 0;
-		for(int i = 1; i<5; i++) {
-			if(h.getCard(i-1).getRank() == h.getCard(i).getRank()) {
-				count++;
+		int counter = 0;
+		for(int i = 0; i< h.getSize(); i++) {
+			counter = 0;
+			for(int j = 0; j<h.getSize(); j++) {
+				if(h.getCard(j).getRank() == h.getCard(i).getRank()) {
+					counter++;
+				}
+			}
+			if(counter == 2) {
+				return true;
 			}
 		}
-		if(count == 1) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return false;
 	}
-//	
-//	public Card highCard(Hand h) {
-//		
-//		Card hc = new Card();
-//		for(int i = 0; i<5; i++) {
-//			if(h.getCard(i).getRank() > 0) {
-//				hc.creatCard(h.getCard(i).getSuit(), );
-//			}
-//		}
-//	}
+
+	
 
 }

@@ -14,12 +14,12 @@ public class FileReaderTest {
 
 	@Test
 	public void fileReaderSuitTest() {
-		Card card = new Card();
-		card.bufferReadSuit();
+		Card card = new Card(0,0);
+		//card.bufferReadSuit();
 		List<String> suit = new ArrayList<String>();
 		suit.add("*");
-		suit.add("D");
 		suit.add("C");
+		suit.add("D");
 		suit.add("H");
 		suit.add("S");
 		
@@ -29,8 +29,8 @@ public class FileReaderTest {
 	
 	@Test
 	public void fileReaderRankTest() {
-		Card card = new Card();
-		card.bufferReadRank();
+		Card card = new Card(0,0);
+		//card.bufferReadRank();
 		List<String> rank = new ArrayList<String>();
 		rank.add("*");
 		rank.add("*");

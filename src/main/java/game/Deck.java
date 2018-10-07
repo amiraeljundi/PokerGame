@@ -22,20 +22,14 @@ public class Deck {
 		int i = 0;
 		for(int suit = Card.DIAMOND; suit <= Card.SPADE; suit++) {
 			for(int rank = 2; rank <= 14; rank++) {
-				Card card = new Card();
-				card.bufferReadRank();
-				card.bufferReadSuit();
-				card.creatCard(suit, rank);
-				//System.out.println(card.rankString());
+				Card card = new Card(suit, rank);
 				deckOfCards.add(i, card);
-				//System.out.println(deckOfCards.get(i));
 				i++;		
 			}	
 		}
 		currentCard=0;
-		//System.out.println(deckOfCards.size());
-	}
 	
+	}
 	
 	public void shuffle() {
 		Card temp;
@@ -79,8 +73,6 @@ public class Deck {
 		
 		return (s);
 	}
-	
-	
 
 }
 	

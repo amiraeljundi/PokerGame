@@ -18,10 +18,20 @@ public class Card {
     private List<String> suit;
     private List<String> rank;
         
-    public Card() {
+    public Card(int s, int r) {
     	suit = new ArrayList<String>();
     	rank = new ArrayList<String>();
 		// TODO Auto-generated constructor stub
+    	bufferReadRank();
+    	bufferReadSuit();
+    	
+    	if(r == 1) {
+    		cardRank = 14;
+    	}else
+    	{
+    		cardRank = r;
+    		cardSuit = s;
+    	}
 	}
    
 	public void bufferReadRank() {
@@ -81,17 +91,17 @@ public class Card {
 		}
     }
     
-    public void creatCard(int s, int r) {
-  
-    	
-    	if(r == 1) {
-    		cardRank = 14;
-    	}else
-    	{
-    		cardRank = r;
-    		cardSuit = s;
-    	}
-    }
+//    public void creatCard(int s, int r) {
+//  
+//    	
+//    	if(r == 1) {
+//    		cardRank = 14;
+//    	}else
+//    	{
+//    		cardRank = r;
+//    		cardSuit = s;
+//    	}
+//    }
     
     public List<String> getSuitList(){
     	return suit;

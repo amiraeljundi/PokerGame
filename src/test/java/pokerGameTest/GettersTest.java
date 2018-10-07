@@ -22,8 +22,7 @@ public class GettersTest {
 		suit.add("H");
 		suit.add("S");
 		
-		Card card = new Card();
-		card.bufferReadSuit();
+		Card card = new Card(0,0);
 		assertTrue(suit.equals(card.getSuitList()));
 	
 	}
@@ -48,15 +47,13 @@ public class GettersTest {
 		rank.add("K");
 		rank.add("A");
 		
-		Card card = new Card();
-		card.bufferReadRank();
+		Card card = new Card(0,0);
 		assertTrue(rank.equals(card.getRankList()));
 	}
 	
 	@Test
 	public void getSuitTest() {
-		Card card = new Card();
-		card.creatCard(3, 7);
+		Card card = new Card(3,7);
 		int ER = 3; 
 		int AR = card.getSuit();
 		assertEquals(ER, AR);
@@ -64,8 +61,7 @@ public class GettersTest {
 	
 	@Test
 	public void getRankTest() {
-		Card card = new Card();
-		card.creatCard(3, 7);
+		Card card = new Card(3,7);
 		int ER1 = 7;
 		int AR1 = card.getRank();
 		assertEquals(ER1, AR1);
@@ -88,16 +84,12 @@ public class GettersTest {
 	public void getCardTestinHandClass() {
 		Deck deck = new Deck();
 		Hand hand = new Hand();
-		Card card1 = new Card();
-		Card card2 = new Card();
-		Card card3 = new Card();
-		Card card4 = new Card();
-		Card card5 = new Card();
-		card1.creatCard(3, 7);
-		card2.creatCard(1,12);
-		card3.creatCard(2,8);
-		card4.creatCard(4,13);
-		card5.creatCard(1,1);
+		Card card1 = new Card(3,7);
+		Card card2 = new Card(1,12);
+		Card card3 = new Card(2,8);
+		Card card4 = new Card(4,13);
+		Card card5 = new Card(1,1);
+		
 		
 		hand.addCard(card1);
 		hand.addCard(card2);
@@ -117,17 +109,12 @@ public class GettersTest {
 		Hand hand = new Hand();
 		Player player1 = new Player();
 		
-		Card card1 = new Card();
-		Card card2 = new Card();
-		Card card3 = new Card();
-		Card card4 = new Card();
-		Card card5 = new Card();
+		Card card1 = new Card(3,7);
+		Card card2 = new Card(1,12);
+		Card card3 = new Card(2,8);
+		Card card4 = new Card(4,13);
+		Card card5 = new Card(1,1);
 		
-		card1.creatCard(3, 7);
-		card2.creatCard(1,12);
-		card3.creatCard(2,8);
-		card4.creatCard(4,13);
-		card5.creatCard(1,1);
 		
 		player1.getHand().addCard(card1);
 		player1.getHand().addCard(card2);
